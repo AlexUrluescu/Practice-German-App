@@ -37,3 +37,11 @@
 .exampleEN { font-size: 0.8rem; color: var(--text-muted); }
 
 .noResults { text-align: center; color: var(--text-muted); padding: 40px; }
+
+@media (max-width: 480px) {
+  .header { flex-direction: column; align-items: flex-start; }
+  .filterRow { flex-direction: column; }
+  .verbMain { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .verbDetails { overflow-x: auto; }
+  .conjugationTable th, .conjugationTable td { padding: 6px 8px; font-size: 0.75rem; }
+}

@@ -90,8 +90,8 @@ input {
 
 .main-content {
   flex: 1;
-  padding: 24px;
-  padding-bottom: calc(var(--nav-height) + 24px);
+  padding: 16px;
+  padding-bottom: calc(var(--nav-height) + 24px + env(safe-area-inset-bottom, 0px));
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
@@ -99,6 +99,7 @@ input {
 
 @media (min-width: 769px) {
   .main-content {
+    padding: 24px;
     padding-left: 100px;
     padding-bottom: 24px;
   }

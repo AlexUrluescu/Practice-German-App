@@ -149,7 +149,7 @@
 
 .activityGrid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
   gap: 4px;
 }
 
@@ -169,10 +169,11 @@
 .intensity3 { background: var(--green); box-shadow: 0 0 8px var(--green-glow); }
 
 @media (max-width: 480px) {
-  .heroTitle {
-    font-size: 1.5rem;
-  }
-  .actions {
-    flex-direction: column;
-  }
+  .heroTitle { font-size: 1.5rem; }
+  .heroSubtitle { font-size: 0.85rem; }
+  .streakBadge { padding: 8px 12px; }
+  .streakCount { font-size: 1.2rem; }
+  .actions { flex-direction: column; }
+  .statValue { font-size: 1.1rem; }
+  .statCard { padding: 12px 8px; }
 }

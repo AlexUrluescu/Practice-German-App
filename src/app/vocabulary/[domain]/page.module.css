@@ -40,9 +40,9 @@
 .flashcardActions { display: flex; justify-content: center; gap: 12px; }
 
 /* Quiz */
-.quizContent { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 20px 0; }
-.quizPrompt { font-size: 1rem; color: var(--text-secondary); }
-.quizWord { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+.quizContent { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 20px 0; width: 100%; }
+.quizPrompt { font-size: 1rem; color: var(--text-secondary); text-align: center; }
+.quizWord { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; text-align: center; flex-wrap: wrap; justify-content: center; }
 .quizArticle { font-size: 1.2rem; color: var(--blue); font-weight: 600; }
 
 .optionsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px; }
@@ -69,3 +69,15 @@
 .completeStatValue { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; }
 .completeStatLabel { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
 .completeActions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .domainHeader { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .domainIcon { width: 56px; height: 56px; font-size: 2rem; }
+  .domainTitle { font-size: 1.4rem; }
+  .flashcard { height: 240px; }
+  .flashcardWord { font-size: 1.6rem; }
+  .quizWord { font-size: 2rem; }
+  .optionsGrid { grid-template-columns: 1fr; }
+  .completeTitle { font-size: 1.6rem; }
+  .completeStats { gap: 16px; flex-wrap: wrap; }
+}

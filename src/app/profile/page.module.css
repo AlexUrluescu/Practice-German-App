@@ -23,7 +23,7 @@
 .progressCount { color: var(--text-muted); font-weight: 600; }
 
 .activitySection { }
-.heatmap { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 12px; }
+.heatmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(20px, 1fr)); gap: 4px; margin-bottom: 12px; }
 .heatCell { width: 100%; aspect-ratio: 1; border-radius: 4px; transition: transform var(--transition-fast); cursor: default; }
 .heatCell:hover { transform: scale(1.3); }
 .heat0 { background: var(--bg-secondary); }
@@ -46,3 +46,10 @@
 .resetConfirm { text-align: center; display: flex; flex-direction: column; gap: 10px; }
 .resetConfirm p { font-size: 0.85rem; color: var(--red); }
 .resetBtns { display: flex; gap: 8px; justify-content: center; }
+
+@media (max-width: 480px) {
+  .profileHeader { flex-direction: column; text-align: center; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .domainName { width: 100px; }
+  .resetBtns { flex-direction: column; }
+}
