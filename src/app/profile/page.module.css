@@ -1,0 +1,48 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.profileHeader { display: flex; align-items: center; gap: 20px; animation: fadeInUp 0.5s ease; }
+.avatar { position: relative; width: 80px; height: 80px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover)); display: flex; align-items: center; justify-content: center; border: 3px solid var(--green); flex-shrink: 0; }
+.avatarEmoji { font-size: 2.5rem; }
+.levelBadge { position: absolute; bottom: -6px; right: -6px; background: var(--green); color: #1a1a2e; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); }
+.profileInfo { flex: 1; }
+.profileName { font-size: 1.6rem; }
+.profileSub { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+.statsGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 600px) { .statsGrid { grid-template-columns: repeat(4, 1fr); } }
+
+.statCard { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px 12px; text-align: center; }
+.statEmoji { font-size: 1.5rem; }
+.statVal { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; }
+.statLbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+
+.progressSection { display: flex; flex-direction: column; gap: 16px; }
+.sectionTitle { font-size: 1rem; color: var(--text-secondary); }
+.progressRow { display: flex; flex-direction: column; gap: 6px; }
+.progressLabel { display: flex; justify-content: space-between; font-size: 0.85rem; }
+.progressCount { color: var(--text-muted); font-weight: 600; }
+
+.activitySection { }
+.heatmap { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 12px; }
+.heatCell { width: 100%; aspect-ratio: 1; border-radius: 4px; transition: transform var(--transition-fast); cursor: default; }
+.heatCell:hover { transform: scale(1.3); }
+.heat0 { background: var(--bg-secondary); }
+.heat1 { background: rgba(88,204,2,0.25); }
+.heat2 { background: rgba(88,204,2,0.55); }
+.heat3 { background: var(--green); box-shadow: 0 0 8px var(--green-glow); }
+.heatLegend { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
+.heatLegend .heatCell { width: 14px; height: 14px; }
+.legendLabel { font-size: 0.7rem; color: var(--text-muted); }
+
+.domainsSection { display: flex; flex-direction: column; gap: 12px; }
+.domainRow { display: flex; align-items: center; gap: 10px; }
+.domainIcon { font-size: 1.2rem; width: 28px; text-align: center; }
+.domainName { font-size: 0.85rem; font-weight: 600; width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.domainBar { flex: 1; height: 8px; background: var(--bg-secondary); border-radius: var(--radius-full); overflow: hidden; }
+.domainFill { height: 100%; border-radius: var(--radius-full); transition: width var(--transition-slow); }
+.domainPct { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; width: 36px; text-align: right; }
+
+.dangerZone { padding-top: 16px; border-top: 1px solid var(--border-glass); display: flex; justify-content: center; }
+.resetConfirm { text-align: center; display: flex; flex-direction: column; gap: 10px; }
+.resetConfirm p { font-size: 0.85rem; color: var(--red); }
+.resetBtns { display: flex; gap: 8px; justify-content: center; }

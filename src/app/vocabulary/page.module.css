@@ -1,0 +1,118 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  animation: fadeInUp 0.5s ease;
+}
+
+.title {
+  font-size: 2rem;
+  background: linear-gradient(135deg, var(--green), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  border-left: 4px solid var(--domain-color);
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--domain-color);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.cardProgress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--domain-color);
+  transition: width var(--transition-slow);
+}
+
+.progressText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cardArrow {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.card:hover .cardArrow {
+  color: var(--domain-color);
+  transform: translateX(4px);
+}

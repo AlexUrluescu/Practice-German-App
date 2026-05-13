@@ -1,0 +1,132 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-glass);
+  padding: 8px 0;
+}
+
+.logo {
+  display: none;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background: var(--bg-card);
+}
+
+.navIcon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.navLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.active .navLabel {
+  color: var(--green);
+}
+
+.active .navIcon {
+  transform: scale(1.15);
+  transition: transform var(--transition-fast);
+}
+
+.activeIndicator {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: var(--green);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glow-green);
+}
+
+/* Desktop: sidebar */
+@media (min-width: 769px) {
+  .nav {
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: 80px;
+    border-top: none;
+    border-right: 1px solid var(--border-glass);
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .logoIcon {
+    font-size: 2rem;
+  }
+
+  .logoText {
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .navLink {
+    padding: 12px 8px;
+    width: 100%;
+  }
+
+  .activeIndicator {
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+  }
+}

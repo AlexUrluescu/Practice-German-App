@@ -1,0 +1,39 @@
+.page { display: flex; flex-direction: column; gap: 20px; }
+
+.header { display: flex; justify-content: space-between; align-items: center; animation: fadeInUp 0.5s ease; flex-wrap: wrap; gap: 12px; }
+.title { font-size: 2rem; background: linear-gradient(135deg, var(--purple), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; }
+
+.filters { display: flex; flex-direction: column; gap: 10px; animation: fadeInUp 0.5s ease 0.1s both; }
+.searchInput { width: 100%; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); font-size: 0.95rem; color: var(--text-primary); outline: none; transition: border-color var(--transition-fast); }
+.searchInput:focus { border-color: var(--purple); }
+.searchInput::placeholder { color: var(--text-muted); }
+.filterRow { display: flex; gap: 10px; }
+.filterSelect { flex: 1; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.85rem; outline: none; cursor: pointer; }
+.filterSelect option { background: var(--bg-secondary); }
+
+.verbList { display: flex; flex-direction: column; gap: 8px; }
+
+.verbCard { background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 16px 20px; cursor: pointer; transition: all var(--transition-normal); }
+.verbCard:hover { background: var(--bg-card-hover); border-color: rgba(255,255,255,0.12); }
+.expanded { border-color: var(--purple); background: var(--bg-card-hover); }
+
+.verbMain { display: flex; justify-content: space-between; align-items: center; }
+.verbInfo { display: flex; align-items: baseline; gap: 12px; }
+.verbInfinitive { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; }
+.verbEnglish { font-size: 0.85rem; color: var(--text-muted); }
+.verbMeta { display: flex; align-items: center; gap: 8px; }
+.verbPattern { font-size: 0.7rem; color: var(--text-muted); background: var(--bg-secondary); padding: 2px 8px; border-radius: var(--radius-full); }
+
+.verbDetails { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-glass); animation: fadeIn 0.3s ease; }
+
+.conjugationTable { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+.conjugationTable th, .conjugationTable td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.85rem; }
+.conjugationTable th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
+.conjugationTable td strong { color: var(--green); }
+
+.exampleBox { background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 12px 16px; }
+.exampleDE { font-style: italic; font-size: 0.9rem; margin-bottom: 4px; }
+.exampleEN { font-size: 0.8rem; color: var(--text-muted); }
+
+.noResults { text-align: center; color: var(--text-muted); padding: 40px; }
