@@ -9,6 +9,15 @@ export default function VerbsPage() {
   const [filterDiff, setFilterDiff] = useState<string>('all');
   const [filterPattern, setFilterPattern] = useState<string>('all');
   const [expandedVerb, setExpandedVerb] = useState<string | null>(null);
+  const [selectedVerbs, setSelectedVerbs] = useState<Set<string>>(new Set());
+
+  const toggleSelection = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    const newSet = new Set(selectedVerbs);
+    if (newSet.has(id)) newSet.delete(id);
+    else newSet.add(id);
+    setSelectedVerbs(newSet);
+  };
 
   const filtered = useMemo(() => {
     return irregularVerbs.filter(v => {
@@ -63,6 +72,12 @@ export default function VerbsPage() {
               <option key={p.id} value={p.label}>{p.label} ({patternGroups[p.label] || 0})</option>
             ))}
           </select>
+          <button 
+            className="btn btn-secondary btn-sm" 
+            onClick={() => setSelectedVerbs(selectedVerbs.size === filtered.length ? new Set() : new Set(filtered.map(v => v.id)))}
+          >
+            {selectedVerbs.size === filtered.length && filtered.length > 0 ? 'Deselect All' : 'Select All Filtered'}
+          </button>
         </div>
       </div>
 
@@ -76,6 +91,13 @@ export default function VerbsPage() {
           >
             <div className={styles.verbMain}>
               <div className={styles.verbInfo}>
+                <input 
+                  type="checkbox" 
+                  className={styles.verbCheckbox} 
+                  checked={selectedVerbs.has(verb.id)} 
+                  onChange={(e) => toggleSelection(e as any, verb.id)}
+                  onClick={(e) => e.stopPropagation()}
+                />
                 <span className={styles.verbInfinitive}>{verb.infinitive}</span>
                 <span className={styles.verbEnglish}>{verb.english}</span>
               </div>
@@ -118,6 +140,15 @@ export default function VerbsPage() {
           <p className={styles.noResults}>No verbs match your filters.</p>
         )}
       </div>
+
+      {selectedVerbs.size > 0 && (
+        <div className={styles.floatingActionBar}>
+          <span className={styles.selectionCount}>{selectedVerbs.size} verbs selected</span>
+          <Link href={`/verbs/practice?ids=${Array.from(selectedVerbs).join(',')}`} className="btn btn-primary">
+            Practice Selected
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

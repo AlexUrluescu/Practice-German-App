@@ -1,6 +1,7 @@
 'use client';
 import { useState, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useMemo } from 'react';
 import { irregularVerbs } from '@/data/irregular-verbs';
 import { IrregularVerb } from '@/data/types';
 import { addXP, updateVerbProgress, loseHeart, getProgress } from '@/lib/progress';
@@ -73,8 +74,18 @@ function generateFillGapQ(verb: IrregularVerb) {
   return { sentence: gapped, answer };
 }
 
-export default function VerbPracticePage() {
+function PracticeContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const idsParam = searchParams.get('ids');
+
+  const availableVerbs = useMemo(() => {
+    if (!idsParam) return irregularVerbs;
+    const selectedIds = idsParam.split(',');
+    const filtered = irregularVerbs.filter(v => selectedIds.includes(v.id));
+    return filtered.length > 0 ? filtered : irregularVerbs;
+  }, [idsParam]);
+
   const [mode, setMode] = useState<PracticeMode>('select');
   const [exerciseType, setExerciseType] = useState<ExerciseType>('conjugation');
   const [verbs, setVerbs] = useState<IrregularVerb[]>([]);
@@ -104,10 +115,11 @@ export default function VerbPracticePage() {
 
   const startPractice = (type: ExerciseType) => {
     setExerciseType(type);
-    const shuffled = shuffleArray(irregularVerbs).slice(0, 15);
+    const shuffled = shuffleArray(availableVerbs).slice(0, 15);
+    const sessionTotal = Math.min(15, availableVerbs.length);
     setVerbs(shuffled);
     const p = getProgress();
-    setState({ currentIndex: 0, score: 0, total: 15, hearts: p.hearts, showResult: false, isCorrect: null, correctAnswer: '' });
+    setState({ currentIndex: 0, score: 0, total: sessionTotal, hearts: p.hearts, showResult: false, isCorrect: null, correctAnswer: '' });
     setUserInput('');
     setTotalXP(0);
     setMode('practice');
@@ -156,7 +168,9 @@ export default function VerbPracticePage() {
       <div className={styles.page}>
         <button className={styles.backBtn} onClick={() => router.push('/verbs')}>← Back</button>
         <h1 className={styles.title}>Choose Practice Mode</h1>
-        <p className={styles.subtitle}>15 verbs per session</p>
+        <p className={styles.subtitle}>
+          {idsParam ? `Practicing ${availableVerbs.length} selected verbs` : '15 verbs per session'}
+        </p>
 
         <div className={styles.modeGrid}>
           <button className={`glass-card ${styles.modeCard}`} onClick={() => startPractice('conjugation')}>
@@ -266,5 +280,13 @@ export default function VerbPracticePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VerbPracticePage() {
+  return (
+    <Suspense fallback={<div style={{ textAlign: 'center', padding: '40px' }}>Loading practice mode...</div>}>
+      <PracticeContent />
+    </Suspense>
   );
 }
